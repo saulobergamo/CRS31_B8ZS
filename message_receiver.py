@@ -2,10 +2,11 @@ import socket
 import threading
 import utils
 import b8zs
+import asyncio
 
 # Configure the IP address and port of the local computer
 local_ip = '192.168.0.186'  # Local computer IP address
-local_port = 5555
+local_port = 5554
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -29,10 +30,10 @@ def receive_message():
         if not data:
             break
         
-        b8zs_code, b8zs_graph = b8zs.convert_to_b8zs(data)
+        b8zs_code, b8zs_graph = b8zs.convert_to_b8zs(data.decode('utf-8'))
         print('Código de linha B8ZS:', b8zs_code)
         # Plot B8ZS graph
-        b8zs.plot_b8zs(b8zs_graph)
+        asyncio.run(b8zs.plot_b8zs(b8zs_graph))
 
         print('Mensagem binária recebida:', data)
         # Convert binary message to text

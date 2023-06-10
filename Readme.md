@@ -56,6 +56,7 @@ O que será necessário instalar para que funcione corretamente
 - VSCode
 - Git
 - Python (versão utilizada: 3.8.10)
+- Matplot lib (pip install matplotlib)
 
 
 ### Instalação
