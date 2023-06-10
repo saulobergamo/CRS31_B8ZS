@@ -32,13 +32,6 @@ def convert_to_b8zs(binary_sequence):
 
     return b8zs_code, b8zs_graph
 
-# Use case
-binary_sequence = input("Digite a sequência binária: ")
-b8zs_code, b8zs_graph = convert_to_b8zs(binary_sequence)
-
-print("Código de linha B8ZS:", b8zs_code)
-print("Código de linha B8ZS [-1,0,1]:", b8zs_graph)
-
 # Plotting
 def plot_b8zs(b8zs_graph):
     plt.plot(b8zs_graph, drawstyle='steps-pre')
