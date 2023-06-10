@@ -1,6 +1,7 @@
 import socket
 import threading
 import utils
+import b8zs
 
 # Configure the IP address and port of the local computer
 local_ip = '192.168.0.186'  # Local computer IP address
@@ -27,11 +28,19 @@ def receive_message():
         data = conection.recv(1024)
         if not data:
             break
-        # msg_received = data.decode('utf-8')
-        bin_msg = utils.convert_to_text(data.decode('utf-8'))
+        
+        b8zs_code, b8zs_graph = b8zs.convert_to_b8zs(data)
+        print('Código de linha B8ZS:', b8zs_code)
+        # Plot B8ZS graph
+        b8zs.plot_b8zs(b8zs_graph)
+
         print('Mensagem binária recebida:', data)
-        msg_decrypted = utils.decrypt(bin_msg)
+        # Convert binary message to text
+        bin_msg = utils.convert_to_text(data.decode('utf-8'))
         print('Mensagem encriptada recebida:', bin_msg)
+        # Decrypt message
+        msg_decrypted = utils.decrypt(bin_msg)
+        
 
         print('Mensagem recebida:', msg_decrypted)
 
