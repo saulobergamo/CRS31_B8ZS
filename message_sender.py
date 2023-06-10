@@ -2,6 +2,8 @@ import socket
 import threading
 import b8zs
 import utils
+import warnings
+warnings.simplefilter("ignore", UserWarning)
 
 # Configure the IP address and port of the target computer
 foreign_ip = '192.168.0.186'  # IP do Computador 2
@@ -27,10 +29,12 @@ def send_message():
         # Convert binary message to B8ZS
         b8zs_code, b8zs_graph = b8zs.convert_to_b8zs(binary_message)
         print('Código de linha B8ZS:', b8zs_code)
+        
+        sock.sendall(binary_message.encode('utf-8'))
         # Plot B8ZS graph
         b8zs.plot_b8zs(b8zs_graph)
         
-        sock.sendall(binary_message.encode('utf-8'))
+        
 
 # Start thread to send messages
 send_thread = threading.Thread(target=send_message)
