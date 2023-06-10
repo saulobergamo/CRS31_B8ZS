@@ -15,6 +15,7 @@ def send_message():
     while True:
         # Send message
         msg = input('Digite uma mensagem: ')
+        
         sock.sendall(msg.encode('utf-8'))
 
 # Start thread to send messages

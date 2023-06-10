@@ -1,5 +1,6 @@
 import socket
 import threading
+import utils
 
 # Configure the IP address and port of the local computer
 local_ip = '192.168.0.186'  # Local computer IP address
@@ -26,8 +27,13 @@ def receive_message():
         data = conection.recv(1024)
         if not data:
             break
-        msg_received = data.decode('utf-8')
-        print('Mensagem recebida:', msg_received)
+        # msg_received = data.decode('utf-8')
+        bin_msg = utils.convert_to_text(data.decode('utf-8'))
+        print('Mensagem binária recebida:', data)
+        msg_decrypted = utils.decrypt(bin_msg)
+        print('Mensagem encriptada recebida:', bin_msg)
+
+        print('Mensagem recebida:', msg_decrypted)
 
 # Start thread to receive messages
 thread_recebimento = threading.Thread(target=receive_message)
