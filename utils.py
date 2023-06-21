@@ -23,3 +23,9 @@ def convert_to_text(binary_message):
         text_message += chr(int(byte, 2))  # Converts each 8-bit binary byte to its corresponding character
     return text_message
 
+def encrypt_v2(message):
+    return message.encode('utf-8').hex()
+
+def decrypt_v2(encrypted_message):
+    return bytes.fromhex(encrypted_message).decode('utf-8')
+

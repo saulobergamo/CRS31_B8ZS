@@ -21,14 +21,14 @@ def send_message():
         msg = input('Digite uma mensagem: ')
 
         # Crypt message
-        crypt_msg = utils.encrypt(msg)
+        crypt_msg = utils.encrypt_v2(msg)
         print('Mensagem criptografada:', crypt_msg)
         # Convert message to binary
         binary_message = utils.convert_to_binary(crypt_msg)
         print('Mensagem em binário:', binary_message)
         # Convert binary message to B8ZS
         b8zs_code, b8zs_graph = b8zs.convert_to_b8zs(binary_message)
-        print('Código de linha B8ZS:', b8zs_code)
+        print('Código de linha B8ZS:', b8zs_code, "\n")
         
         sock.sendall(binary_message.encode('utf-8'))
         # Plot B8ZS graph
@@ -46,7 +46,7 @@ while True:
     if not data:
         break
     msg_received = data.decode('utf-8')
-    print('Mensagem recebida:', msg_received)
+    print('Mensagem recebida:', msg_received, "\n")
 
 # Close socket
 sock.close()

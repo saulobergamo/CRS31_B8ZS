@@ -76,4 +76,4 @@ O que será necessário instalar para que funcione corretamente
 
     Comando: ```python3 message_receiver.py```
 
-
+** Importante que ambas as máquinas estejam conectadas à mesma rede

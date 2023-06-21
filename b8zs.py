@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 
 def convert_to_b8zs(binary_sequence):
-    b8zs_code = ""
-    b8zs_graph = []
+    b8zs_code = "0"
+    b8zs_graph = [0]
 
     count_zeros = 0
     last_one = -1

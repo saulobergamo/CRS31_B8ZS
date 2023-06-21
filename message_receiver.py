@@ -32,17 +32,17 @@ def receive_message():
             break
         
         b8zs_code, b8zs_graph = b8zs.convert_to_b8zs(data.decode('utf-8'))
-        print('Código de linha B8ZS:', b8zs_code)
+        print('Código de linha B8ZS:', b8zs_code, "\n")
 
 
         print('Mensagem binária recebida:', data)
         # Convert binary message to text
         bin_msg = utils.convert_to_text(data.decode('utf-8'))
-        print('Mensagem encriptada recebida:', bin_msg)
+        print('Mensagem encriptada recebida:', bin_msg, "\n")
         # Decrypt message
-        msg_decrypted = utils.decrypt(bin_msg)
+        msg_decrypted = utils.decrypt_v2(bin_msg)
 
-        print('Mensagem recebida:', msg_decrypted)
+        print('Mensagem recebida:', msg_decrypted, "\n")
         # Plot B8ZS graph
         b8zs.plot_b8zs(b8zs_graph)
 
@@ -52,7 +52,7 @@ thread_recebimento = threading.Thread(target=receive_message)
 thread_recebimento.start()
 
 # Wait for keyboard input to exit the program
-input("Pressione Enter para encerrar...")
+input("Pressione Enter para encerrar...\n\n")
 
 # Close connection and socket
 conection.close()
